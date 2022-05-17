@@ -1,5 +1,5 @@
 # labcsv.py
-You can easily get the data you need columns from lab.js.csv!
+You can easily get the data you need columns from [lab.js](https://github.com/FelixHenninger/lab.js).csv!
 
 # Installation
 `pip install labcsv`
