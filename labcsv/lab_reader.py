@@ -43,14 +43,13 @@ class LabReader:
         """
         self.pandas_data =pd_data
         self.header_names = pd_data.columns.to_list()
-        self.all_values = pd_data.values
 
     def get_column_values(self,header_names:Union[list[DefaultHeaderNameOrStr],str]):
         def _get_column_values(header_name:DefaultHeaderNameOrStr):
             if isinstance(header_name,DefaultHeaderName):
                 header_name = header_name.value
             idx = self.header_names.index(header_name)
-            return self.all_values[:,idx]
+            return self.pandas_data.values[:,idx]
         if isinstance(header_names,list):
             columns = None
             for hname in header_names:
