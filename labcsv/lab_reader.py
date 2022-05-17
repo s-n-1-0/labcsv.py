@@ -57,7 +57,7 @@ class LabReader:
                     columns = _get_column_values(hname)
                 else:
                     columns = np.vstack((columns,_get_column_values(hname)))
-            return columns
+            return columns.transpose()
         else:
-            return _get_column_values(header_names)
+            return _get_column_values(header_names).transpose()
     
