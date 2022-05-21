@@ -2,6 +2,7 @@ import numpy as np
 from enum import Enum
 from typing import Union
 import pandas as pd
+import json
 def read_csv(path:str):
     """read lab.csv
 
@@ -61,3 +62,6 @@ class LabReader:
         else:
             return _get_column_values(header_names).transpose()
     
+    def get_meta(self):
+        meta = self.get_column_values(DefaultHeaderName.META)[0]
+        return json.loads(meta)
