@@ -13,4 +13,9 @@ for name in LHName:
     print(rlab.get_column_values(name))
 
 
+# %% test/get_meta
+meta = rlab.get_meta()
+print(meta["labjs_version"])
+print(meta["language"])
+print(meta["location"])
 # %%

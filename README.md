@@ -6,13 +6,13 @@ You can easily get the data you need columns from [lab.js](https://github.com/Fe
 
 
 # How to Use
-### Read CSV
+## Read CSV
 ```python
 from labcsv import read_csv,DefaultHeaderName as LHName
 rlab = read_csv("tests/test.csv") #<- path
 ```
 
-### Get columns data
+## Get columns data
 The type of data returned is ndarray.
 
 ```python
@@ -35,5 +35,11 @@ print(rlab.get_column_values("Param1"))
 ```
 You can use pandas functions.
 
-### Get meta
-None yet.
+## Get meta
+```python
+meta = rlab.get_meta()
+print(meta["labjs_version"])
+print(meta["language"])
+print(meta["location"])
+```
+
