@@ -18,4 +18,9 @@ meta = rlab.get_meta()
 print(meta["labjs_version"])
 print(meta["language"])
 print(meta["location"])
+# %% test/read_csv dtype
+rlab = read_csv("tests/test.csv",dtype=None)
+print(rlab.get_column_values("Param2"))
+rlab = read_csv("tests/test.csv",dtype={"Param2":str})
+print(rlab.get_column_values("Param2"))
 # %%

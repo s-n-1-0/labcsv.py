@@ -1,9 +1,10 @@
 import numpy as np
 from enum import Enum
-from typing import Union
+from typing import Union, Optional
 import pandas as pd
+from pandas._typing import DtypeArg
 import json
-def read_csv(path:str):
+def read_csv(path:str,dtype:Optional[DtypeArg]= None):
     """read lab.csv
 
     Args:
@@ -12,7 +13,7 @@ def read_csv(path:str):
     Returns:
         LabReader
     """
-    return LabReader(pd.read_csv(path))
+    return LabReader(pd.read_csv(path,dtype=dtype))
 
 class DefaultHeaderName(Enum):
     """
