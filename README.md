@@ -11,7 +11,14 @@ You can easily get the data you need columns from [lab.js](https://github.com/Fe
 from labcsv import read_csv,DefaultHeaderName as LHName
 rlab = read_csv("tests/test.csv") #<- path
 ```
-
+### Read columns as any type
++ default: "001" -> 1.0
++ str type: "001" -> "001"
+```python
+rlab = read_csv("tests/test.csv",dtype={"Param2":str})
+```
+*"Param2" is a header name  
+*The specifications are the same as for pandas.
 ## Get columns data
 The type of data returned is ndarray.
 
