@@ -20,7 +20,7 @@ rlab = read_csv("tests/test.csv",dtype={"Param2":str})
 *"Param2" is a header name  
 *The specifications are the same as for pandas.
 ## Get columns data
-The type of data returned is ndarray.
+### The return type is ndarry (get_column_values)
 
 ```python
 values = rlab.get_column_values(LHName.SENDER) #n×1 size
@@ -31,8 +31,15 @@ values = rlab.get_column_values("Param1") #custom column name
 # or 
 values = rlab.get_column_values([LHName.SENDER, "Param1"]) #multiple
 ```
+### The return type is list (get_column_list)
 
-### nan to empty string
+```py
+senders,time_commits = rlab.get_column_list([LHName.SENDER,LHName.TIME_COMMIT])
+print(senders)
+print(time_commits)
+```
+
+## nan to Empty String
 
 ```python
 from labcsv import read_csv,DefaultHeaderName as LHName
