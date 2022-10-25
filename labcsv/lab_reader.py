@@ -46,22 +46,25 @@ class LabReader:
         self.pandas_data =pd_data
         self.header_names = pd_data.columns.to_list()
 
+    def _get_column_values(self,header_name:DefaultHeaderNameOrStr):
+        if isinstance(header_name,DefaultHeaderName):
+            header_name = header_name.value
+        idx = self.header_names.index(header_name)
+        return self.pandas_data.values[:,idx]
     def get_column_values(self,header_names:Union[list[DefaultHeaderNameOrStr],str]):
-        def _get_column_values(header_name:DefaultHeaderNameOrStr):
-            if isinstance(header_name,DefaultHeaderName):
-                header_name = header_name.value
-            idx = self.header_names.index(header_name)
-            return self.pandas_data.values[:,idx]
         if isinstance(header_names,list):
             columns = None
             for hname in header_names:
                 if columns is None:
-                    columns = _get_column_values(hname)
+                    columns = self._get_column_values(hname)
                 else:
-                    columns = np.vstack((columns,_get_column_values(hname)))
+                    columns = np.vstack((columns,self._get_column_values(hname)))
             return columns.transpose()
         else:
-            return _get_column_values(header_names).transpose()
+            return self._get_column_values(header_names).transpose()
+    
+    def get_column_list(self,header_names:list[DefaultHeaderNameOrStr]):
+        return [self._get_column_values(name) for name in header_names]
     
     def get_meta(self):
         meta = self.get_column_values(DefaultHeaderName.META)[0]
