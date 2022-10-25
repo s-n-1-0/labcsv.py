@@ -12,6 +12,10 @@ for name in LHName:
     print(f"----{name.value}")
     print(rlab.get_column_values(name))
 
+# %% test/get_column_list
+senders,time_commits = rlab.get_column_list([LHName.SENDER,LHName.TIME_COMMIT])
+print(senders)
+print(time_commits)
 
 # %% test/get_meta
 meta = rlab.get_meta()
